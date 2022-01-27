@@ -1,6 +1,7 @@
 import { json } from 'express'
 import jwt from "./jwt.js"
 import log from "./log.js"
+import cors from "cors"
 
 export default [
     cors({ origin: '*' }),
