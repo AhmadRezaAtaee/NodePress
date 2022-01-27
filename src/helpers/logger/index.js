@@ -2,7 +2,7 @@ import winston from 'winston'
 import format from "./winston/winston-format.js"
 import transports from "./winston/winston-transports.js"
 
-const level = 'info'
+const level = 'debug'
 const levels = {
 	error: 0,
 	warn: 1,
@@ -21,5 +21,3 @@ const Logger = winston.createLogger({
 })
 
 export default Logger
-
-Logger.http("Hello")
