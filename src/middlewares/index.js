@@ -1,15 +1,14 @@
-import { json } from 'express';
+import { json } from 'express'
+import jwt from "./jwt.js"
+import log from "./log.js"
 
 export default [
-    log,
+    cors({ origin: '*' }),
+    jwt,
     json(),
-    validBodyJson
+    validBodyJson,
+    log,
 ]
-
-function log(err, req, res, next) {
-    console.log(req.baseUrl)
-    next()
-}
 
 function validBodyJson(err, req, res, next) {
     if (['POST', 'PUT'].includes(req.method) && err) {
