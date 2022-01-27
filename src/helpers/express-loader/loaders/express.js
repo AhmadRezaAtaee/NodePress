@@ -9,11 +9,9 @@ const optionsDefault = {
 
 export const expressloader = async (app, options = { ...optionsDefault }) => {
     try {
-        const appPresent = await Promise.all([
-            middlewaresLoader(app, options.middlewaresFile),
-            routesLoader(app, options.routesDir, options.routesPrefix)
-        ])
-        return appPresent[1]
+        const app_middlewares = await middlewaresLoader(app, options.middlewaresFile)
+        const app_routes = await routesLoader(app_middlewares, options.routesDir, options.routesPrefix)
+        return app_routes
     } catch (error) {
         throw error
     }
