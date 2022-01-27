@@ -5,7 +5,7 @@ import { resolve } from 'path'
 const transports = [
     new winston.transports.Console(),
     new fileTransport({
-        dirname: resolve('log'),
+        dirname: resolve('logs'),
         filename: ' '
     })
 ]
