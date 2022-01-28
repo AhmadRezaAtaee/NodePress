@@ -3,7 +3,7 @@ const { format } = winston;
 
 export const time_format = 'YYYY-MM-DD HH:mm:ss';
 
-export const template = ({ message, level, timestamp, label, metadata }) =>
+export const template = ({ message, level, timestamp }) =>
 	`${level}: ${message} - [${timestamp}]`;
 
 export default format.combine(
