@@ -1,18 +1,29 @@
-import { middlewaresFileDefault, middlewaresLoader } from "./middlewares.js"
-import { routesDirDefault, routesPrefixDefault, routesLoader, } from "./routes.js"
+import { middlewaresFileDefault, middlewaresLoader } from './middlewares.js';
+import {
+	routesDirDefault,
+	routesPrefixDefault,
+	routesLoader,
+} from './routes.js';
 
 const optionsDefault = {
-    routesDir: routesDirDefault,
-    middlewaresFile: middlewaresFileDefault,
-    routesPrefix: routesPrefixDefault,
-}
+	routesDir: routesDirDefault,
+	middlewaresFile: middlewaresFileDefault,
+	routesPrefix: routesPrefixDefault,
+};
 
 export const expressloader = async (app, options = { ...optionsDefault }) => {
-    try {
-        const app_middlewares = await middlewaresLoader(app, options.middlewaresFile)
-        const app_routes = await routesLoader(app_middlewares, options.routesDir, options.routesPrefix)
-        return app_routes
-    } catch (error) {
-        throw error
-    }
-}
+	try {
+		const app_middlewares = await middlewaresLoader(
+			app,
+			options.middlewaresFile,
+		);
+		const app_routes = await routesLoader(
+			app_middlewares,
+			options.routesDir,
+			options.routesPrefix,
+		);
+		return app_routes;
+	} catch (error) {
+		throw error;
+	}
+};
