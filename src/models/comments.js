@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Joi from 'joi';
 const { model, Schema } = mongoose;
 
 const schema = new Schema({
@@ -23,12 +22,3 @@ const schema = new Schema({
 });
 
 export default model('Comments', schema);
-
-const commentsSchema = Joi.object({
-	title: Joi.string().required(),
-	content: Joi.string().required(),
-	author_id: Joi.string().required(),
-	parent_id: Joi.string(),
-});
-
-export const commentsValidation = (data) => commentsSchema.validateAsync(data);

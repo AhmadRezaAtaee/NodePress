@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Joi from 'joi';
 const { model, Schema } = mongoose;
 
 const schema = new Schema({
@@ -27,17 +26,3 @@ const schema = new Schema({
 });
 
 export default model('Users', schema);
-
-const registerSchema = Joi.object({
-	name: Joi.string().min(6),
-	email: Joi.string().min(6).required().email(),
-	password: Joi.string().min(6).required(),
-});
-
-const loginSchema = Joi.object({
-	email: Joi.string().min(6).required().email(),
-	password: Joi.string().min(6).required(),
-});
-
-export const registerValidation = (data) => registerSchema.validateAsync(data);
-export const loginValidation = (data) => loginSchema.validateAsync(data);

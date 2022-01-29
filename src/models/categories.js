@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Joi from 'joi';
 const { model, Schema } = mongoose;
 
 const schema = new Schema({
@@ -11,11 +10,3 @@ const schema = new Schema({
 });
 
 export default model('Categories', schema);
-
-const categoriesSchema = Joi.object({
-	name: Joi.string().required(),
-	parent_id: Joi.string(),
-});
-
-export const categoriesValidation = (data) =>
-	categoriesSchema.validateAsync(data);
