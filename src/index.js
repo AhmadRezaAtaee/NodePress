@@ -19,7 +19,7 @@ async function bootStrap() {
 		);
 	} catch (error) {
 		Logger.error(error);
-		return;
+		return process.exit(1);
 	}
 }
 
